@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        margin: auto;
+        border: 5px solid lightBlue;
+        font-size: 30px;
+        padding: 10px;
+        text-align: center;
+        background-color: #0e2431;
+      }
+      p {
+        color: white;
+      }
+      #userInput {
+        /* width: 100%; */
+        color: aquamarine;
+        padding: 10px;
+        margin: 10px 0;
+        border: 2px solid lightblue;
+        background-color: #1b3a4b;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 20px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 600px) {
+        .container {
+          font-size: 20px;
+          padding: 5px;
+        }
+        button {
+          padding: 8px 15px;
+          margin: 5px;
+          font-size: 18px;
+        }
+        #userInput {
+          padding: 8px;
+        }
+        #userInput {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Guess a number between 1 and 100</p>
+      <p id="outPutText">Enter a number below</p>
+<div class="content">
+  <input id="userInput" />
+  <button id="enterButton">Enter</button>
+  <button id="againButton">play again</button>
+</div>
+    </div>
+    <script>
+      var enterButton = document.getElementById("enterButton");
+      var againButton = document.getElementById("againButton");
+      var outPutText = document.getElementById("outPutText");
+      var randomNumber = Math.ceil(Math.random() * 100);
+      function checkNmuber() {
+        var input = document.getElementById("userInput");
+        if (input == randomNumber) {
+          outPutText.innerHtml =
+            "you guessed right " + "," + "it was" + randomNumber;
+        } else if (input > randomNumber && input < 100) {
+          outPutText.innerHTML = "you guess too high";
+        } else if (input < randomNumber && input > 1) {
+          outPutText.innerHTML = "you guess too low";
+        } else if (input < 1) {
+          outPutText.innerHTML = "higher , it has to be between 1 and 200";
+        } else if (isNaN(input)) {
+          outPutText.innerHTML = "that not a number.. play again";
+        } else {
+          outPutText.innerHTML = "lowe , it has to be between 1 and 100";
+        }
+      }
+      enterButton.addEventListener("click", checkNmuber);
+      againButton.addEventListener("click", function () {
+        location.reload();
+      });
+    </script>
+  </body>
+</html>
